@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="veraPDF test results.">
+  <meta name="author" content="veraPDF Consortium">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="sandbox allow-scripts; default-src 'self' *.openpreservation.org; child-src 'self' *.openpreservation.org; style-src 'self' 'unsafe-inline' ">
+  <title>veraPDF dest data</title>
+  <style media="screen" type="text/css">
+    td {
+      padding : 5px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .pass {
+      background-color: green;
+      color: white;
+    }
+    .fail {
+      background-color: red;
+    }
+    .undefined {
+      background-color: orange;
+    }
+    </style>
+<body>
+  <h1>veraPDF Test Summaries : {{details.dateCreated}}</h1>
+  {{#details}}
+  <div id="dependencies">
+    <h3>Dependencies</h3>
+    {{#dependencies}}
+      <div id="{{id}}">
+        <p>{{id}} v{{version}}-{{buildDate}}</p>
+      </div>
+    {{/dependencies}}
+  </div>
+  {{/details}}
+  <div id="results">
+    {{#results}}
+      <div id="{{corpusDetails.name}}">
+        <h2 class="{{summary.passed}}"><a href="{{corpusDetails.name}}-{{validationProfile.PDFAFlavour.id}}/index.html" title="">{{corpusDetails.name}}</a></h2>
+        <pre>
+        Valid Cases: {{summary.validCases}} | passed: {{summary.validCasesPassed}} | failed: {{summary.validCasesFailed}}
+        Invalid: {{summary.invalidCases}} | passed: {{summary.invalidCasesPassed}} | failed: {{summary.invalidCasesFailed}}
+        Exceptions: {{summary.exceptions}}
+        Undefined: {{summary.undefinedCases}} | Not Applicable: {{summary.inapplicableCases}}
+        </pre>
+      </div>
+    {{/results}}
+  </div>
+</body>
+</html>

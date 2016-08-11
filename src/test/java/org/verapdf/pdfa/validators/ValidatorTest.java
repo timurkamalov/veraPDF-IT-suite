@@ -212,7 +212,7 @@ public class ValidatorTest {
             final ValidationException excep) {
         if (!(excep.getCause() instanceof NegativeArraySizeException)) {
             excep.printStackTrace();
-            fail("Exception" + excep.getMessage() + ", while validating"
+            fail("Exception " + excep.getMessage() + ", while validating "
                     + itemName);
         }
         return true;
